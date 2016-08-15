@@ -1,7 +1,6 @@
 from inputs import get_gamepad
 from psonic import *
 from threading import Thread
-import time
 
 def beat():
 	while True:
@@ -11,16 +10,15 @@ def beat():
 def Amen():
 	while True:
 		sample(LOOP_AMEN, amp=0.5)
-		sleep(0.887)
+		sleep(1.753)
 
 
 while True:
     events = get_gamepad()
     for event in events:
-        #print(event.code, event.state)
+        print(event.code, event.state)
         button = event.code
-        #print("The button pressed was ",button)
-        #time.sleep(0.3)
+        print("The button pressed was ",button)
         use_synth(PROPHET)
         if button == "BTN_BASE3" and event.state == 1:
             print("SELECT")
@@ -35,7 +33,6 @@ while True:
         	sample(DRUM_CYMBAL_CLOSED, amp=0.5)
         elif button == "BTN_THUMB2" and event.state == 1:
         	print("UP")
-        	time.sleep(0.1)
         	play(60)
         elif button == "BTN_BASE2" and event.state == 1:
         	print("O")
